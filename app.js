@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const uuid = require('uuid');
-const articles = require('./Articles.js');
+const articles = require('./models/Articles.js');
 
 const app = express();
 
@@ -13,6 +13,9 @@ app.set('view engine', 'handlebars');
 // Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Route to /
 app.get('/', (req, res) => {
@@ -68,6 +71,16 @@ app.post('/articles/edit/:id', (req, res) => {
             articles[i].title = req.body.title;
             articles[i].body = req.body.body;
             res.redirect('/');
+        }
+    }
+});
+
+// Delete route
+app.delete('/articles/:id', (req, res) => {
+    for (i=0; i<articles.length; i++) {
+        if (articles[i].id === req.params.id) {
+            articles.splice(i, 1);
+            res.send('Succes');
         }
     }
 })
