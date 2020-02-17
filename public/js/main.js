@@ -1,17 +1,12 @@
-$(document).ready(function(){
-    $('.delete-article').on('click', function(e){
-        $target = $(e.target);
-        const id = $target.attr('data-id');
-        $.ajax({
-            type:'DELETE',
-            url: '/articles/'+id,
-            success: function(response){
-                alert('Deleting Article');
-                window.location.href='/';
-            },
-            error: function(err){
-                console.log(err);
-            }
-        });
-    });
-});
+document.getElementById('delete-article').addEventListener('click', (e) => {
+    var id = e.target.getAttribute('data-id');
+    fetch('/articles/' + id, {
+        method:'delete'
+    })
+    .then((res) => res.text())
+    .then((res) => {
+        console.log(res)
+        alert("Deleting");
+        window.location.href='/';
+    })
+})
