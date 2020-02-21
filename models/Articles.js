@@ -4,7 +4,7 @@ const articles = [
     {
         id:uuid.v4(),
         title:'Article one',
-        author: 'John Doe',
+        author: 'Eetu Karvonen',
         body: 'This is article one'
     },
     {
@@ -16,7 +16,7 @@ const articles = [
     {
         id:uuid.v4(),
         title:'Article three',
-        author: 'John Doe',
+        author: 'Linda Loe',
         body: 'This is article three'
     },
 ];
