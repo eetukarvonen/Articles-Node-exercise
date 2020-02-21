@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// Route to add article
+// Route to get add article
 app.get('/articles/add', (req, res) => {
     res.render('add_article', {
         title:'Add article'
@@ -85,7 +85,7 @@ app.delete('/articles/:id', (req, res) => {
     }
 })
 
-// Get singel article
+// Get single article
 app.get('/articles/:id', (req, res) => {
     var article = {}
     for (i=0; i<articles.length; i++) {
